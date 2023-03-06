@@ -33,18 +33,18 @@
 //Repeat until the input is correct
 //my answer
 // let i = 0;
-// while(true){
-//     let askNum = prompt('Input: number greater than 100', '');
-//     if(askNum == '' || askNum == 'full'){
-//         alert('Please enter a numeric value.');
-//     } else if(askNum < 100){
-//         alert('What was the question?');
-//     } else if(askNum > 100 || askNum == null){
-//         alert('good job!');
-//         break;
-//     } 
-//     i++;
-// }
+while(true){
+    let askNum = prompt('Input: number greater than 100', '');
+    if(askNum == '' || askNum == 'full'){
+        alert('Please enter a numeric value.');
+    } else if(askNum < 100){
+        alert('What was the question?');
+    } else if(askNum > 100 || askNum == null){
+        alert('good job!');
+        break;
+    } 
+    i++;
+}
 // //javascriptinfo answer
 // let num;
 // do {
