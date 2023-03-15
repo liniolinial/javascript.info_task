@@ -1,11 +1,3 @@
-// let str = `Hello`;
-
-// alert( str[0] ); // undefined
-// alert( str.at(-2) ); // l
-
-// alert( "Widget".startsWith("id") ); 
-
-
 //task-uppercase the first character
 // let ucFirst = 'john';
 // function upperCase () {
@@ -38,24 +30,26 @@
 //    alert(str);
 // }
 
-function truncate(str, maxlength) {
-    return (str.length > maxlength) ?
-      str.slice(0, maxlength - 1) + '…' : str;
-}
-truncate("What I'd like to tell on this topic is:", 20); //= "What I'd like to te…"
-truncate("Hi everyone!", 20); //= "Hi everyone!"
-
-// let inputStr = str[0], str[-1], str[-2];
-// maxlength !== NaN;
-
-// let inputStr = str;
-// if(str.substr(0, maxlength)){
-//      str = '.' + str[-1] + str[-2]+ str[-3];
+// function truncate(str, maxlength) {
+//     return (str.length > maxlength) ?
+//       str.slice(0, maxlength - 1) + '…' : str;
 // }
 
-// let ss = "What I'd like to tell on this topic is";
-// ss = '.' + ss[-2];
-// alert (ss);
-// let str = 'Hi kdlskgjeidjf';
-// str = '.' + str.at(-4) + str;
-// alert(str);
+// function truncate(str, maxlength) {
+//     if(str.length > maxlength){
+//        return alert(str.slice(0, maxlength - 1) + '…');
+//     } else{
+//         return alert(str);
+//     }
+// }
+// truncate("What I'd like to tell on this topic is:", 20);
+
+// function extractCurrencyValue(string){
+//     return string.slice(0) === string.slice(1); 
+
+// }
+function extractCurrencyValue(string){
+    return +string.slice(1); 
+
+}
+console.log(extractCurrencyValue('$120')===120);
