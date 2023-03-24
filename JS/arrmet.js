@@ -207,11 +207,13 @@
 // function shuffle(array) {
 //   for (let i = array.length - 1; i > 0; i--) {
 //     let randomSort = array.sort(() => {
-//       return Math.floor(Math.random() * array.length - i);
+//       // return 0;
+//       return Math.floor(Math.random() * array.length - i); //=hardcoden
 //     });
 //     return randomSort;
 //   }
 // }
+
 // let arr = [1, 2, 3];
 // console.log(shuffle(arr));
 
@@ -228,13 +230,13 @@
 //   312: 0,
 // };
 // for (let i = 0; i < 1000000; i++) {
-//   let array = [1, 2, 3];
+//   let array = [2, 1, 3];
 //   shuffle(array);
 //   count[array.join("")]++;
 // }
 // // show counts of all possible permutations
 // for (let key in count) {
-//   console.log(`${key}: ${count [key]}`);
+//   console.log(`${key}: ${count[key]}`);
 // }
 
 //task9
@@ -260,29 +262,74 @@
 // console.log(getAverageAge(arr)); // (25 + 30 + 29) / 3 = 28
 
 //task10
-function unique(arr) {
-  // let empty = [];
-  let makeObject = arr.map((item) => {
-    return {
-      element: array.arr,
-    };
-  });
-  // let oneAndOnly = arr.forEach((item) => {
-  //   if(!arr.includes(item,0)){
+// function unique(arr) {
+//   let goThrough = arr.forEach((value) => {
+//     function filter(a, b) {
+//       if (!a === b) {
+//         if (arr.includes(value)) {
+//           if (value === value) {
+//             return a && b;
+//           } else {
+//             return a || b;
+//           }
+//         }
+//       }
+//     }
+//     return filter;
+//   });
+//   return goThrough;
+// }
 
-  //   }
-  // });
-  return makeObject;
-}
-let strings = [
-  "Hare",
-  "Krishna",
-  "Hare",
-  "Krishna",
-  "Krishna",
-  "Krishna",
-  "Hare",
-  "Hare",
-  ":-O",
+//Lösung von task 10
+// function unique(arr) {
+//   let result = [];
+
+//   for (let str of arr) {
+//     if (!result.includes(str)) {
+//       result.push(str);
+//     }
+//   }
+//   return result;
+// }
+// let strings = [
+//   "Hare",
+//   "Krishna",
+//   "Hare",
+//   "Krishna",
+//   "Krishna",
+//   "Krishna",
+//   "Hare",
+//   "Hare",
+//   ":-O",
+// ];
+// console.log(unique(strings));
+
+//task11
+// function groupById(users) {
+//   let inMap = users.map((value) => {
+//     return value.id + users;
+//   });
+
+//   // let obj = users.reduce((add, current) => add.id + current, 0);
+//   // for (let obj in nameTag) {
+//   //   return push.obj;
+//   // }
+//   // return nameTag;
+//   return inMap;
+// }
+
+//task 11 mit Marion
+let users = [
+  { id: "john", name: "John Smith", age: 20 },
+  { id: "ann", name: "Ann Smith", age: 24 },
+  { id: "pete", name: "Pete Peterson", age: 31 },
 ];
-console.log(unique(strings));
+
+function groupById(arr) {
+  return arr.reduce((acc, curr) => {
+    acc.curr.id = curr;
+    return acc;
+  }, {});
+}
+let usersById = groupById(users);
+console.log(usersById);
