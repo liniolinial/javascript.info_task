@@ -123,20 +123,25 @@
 //task2
 function topSalary(salaries) {
   let topSalary = null;
+  //iterable: start to end- loop
   for (let [key, value] of Object.entries(salaries)) {
+    //entries: pair
     if (value > topSalary) {
-      topEarner = key;
+      //when value in Object is greater than topSalary (start from 0)
+      topEarner = key; // destructuring assignment (change value with =)
       topSalary = value;
     }
   }
   return topEarner;
 }
+
 let salaries = {
   John: 100,
   Pete: 300,
   Mary: 250,
   Tori: 300,
 };
+
 console.log(topSalary(salaries));
 
 // function topSalary(salaries) {
