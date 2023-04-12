@@ -110,16 +110,27 @@
 // console.log(counter.up()); // 1
 // console.log(counter.up()); // 2
 // console.log(counter.down()); // 1
-"use strict";
+
 //task5 test
-let phrase = "Hello";
+// "use strict";
+// let phrase = "Hello";
 
-if (true) {
-  let user = "John";
+// if (true) {
+//   let user = "John";
 
-  function sayHi() {
-    console.log(`${phrase}, ${user}`);
-  }
-  sayHi();
+//   function sayHi() {
+//     console.log(`${phrase}, ${user}`);
+//   }
+//   sayHi();
+// }
+// // weil function draußen abgerufen ist, es hat nichts mit zum closure zu tun
+
+// task6
+function sum(a) {
+  return function (b) {
+    return a + b;
+  };
 }
-// weil function draußen abgerufen ist, es hat nichts mit zum closure zu tun
+console.log(sum(1)(2));
+console.log(sum(5)(-1));
+sum(1)(2);
