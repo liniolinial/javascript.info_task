@@ -126,11 +126,20 @@
 // // weil function draußen abgerufen ist, es hat nichts mit zum closure zu tun
 
 // task6
-function sum(a) {
-  return function (b) {
-    return a + b;
-  };
+// function sum(a) {
+//   return function (b) {
+//     return a + b;
+//   };
+// }
+// console.log(sum(1)(2));
+// console.log(sum(5)(-1));
+// sum(1)(2);
+
+//task7
+let x = 1;
+function func() {
+  console.log(x); // ?
+  let x = 2; // func weiß nicht, was x ist.
 }
-console.log(sum(1)(2));
-console.log(sum(5)(-1));
-sum(1)(2);
+func();
+// error
