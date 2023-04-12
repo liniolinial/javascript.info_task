@@ -94,19 +94,32 @@
 // console.log(g());
 
 // task 4 test
-function Counter() {
-  let count = 0;
+// function Counter() {
+//   let count = 0;
 
-  this.up = function () {
-    return ++count;
-  };
+//   this.up = function () {
+//     return ++count;
+//   };
 
-  this.down = function () {
-    return --count;
-  };
+//   this.down = function () {
+//     return --count;
+//   };
+// }
+
+// let counter = new Counter();
+// console.log(counter.up()); // 1
+// console.log(counter.up()); // 2
+// console.log(counter.down()); // 1
+"use strict";
+//task5 test
+let phrase = "Hello";
+
+if (true) {
+  let user = "John";
+
+  function sayHi() {
+    console.log(`${phrase}, ${user}`);
+  }
+  sayHi();
 }
-
-let counter = new Counter();
-console.log(counter.up()); // 1
-console.log(counter.up()); // 2
-console.log(counter.down()); // 1
+// weil function draußen abgerufen ist, es hat nichts mit zum closure zu tun
