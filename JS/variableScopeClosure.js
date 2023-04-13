@@ -161,3 +161,21 @@
 // let arr = [1, 2, 3, 4, 5, 6, 7];
 // console.log(inBetween(3, 6)); // 3,4,5,6
 // console.log(inArray([1, 2, 10])); // 1,2
+
+//task9
+function byField(input) {
+  if (input === "name") {
+    return users.sort((a, b) => (a.name > b.name ? 1 : -1));
+  }
+  if (input === "age") {
+    return users.sort((a, b) => (a.age > b.age ? 1 : -1));
+  }
+}
+
+let users = [
+  { name: "John", age: 20, surname: "Johnson" },
+  { name: "Pete", age: 18, surname: "Peterson" },
+  { name: "Ann", age: 19, surname: "Hathaway" },
+];
+console.log(byField("name"));
+console.log(byField("age"));
