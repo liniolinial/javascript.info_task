@@ -145,26 +145,19 @@
 // // error
 
 //task8
-/* .. your code for inBetween and inArray */
-// function Func() {
-//   let start = 0;
-//   this.between = function(){
-//     return arr.filter((item) => a <= item && item <=b );
-//   };
+// function inBetween(a, b) {
+//   return arr.filter((item) => a <= item && item <= b);
 // }
-function inBetween(a, b) {
-  return arr.filter((item) => a <= item && item <= b);
-}
-function inArray(input) {
-  let result = [];
-  for (let str of input) {
-    if (arr.includes(str)) {
-      result.push(str);
-    }
-  }
-  return result;
-}
+// function inArray(input) {
+//   let result = [];
+//   for (let str of input) {
+//     if (arr.includes(str)) {
+//       result.push(str);
+//     }
+//   }
+//   return result;
+// }
 
-let arr = [1, 2, 3, 4, 5, 6, 7];
-console.log(inBetween(3, 6)); // 3,4,5,6
-console.log(inArray([1, 2, 10])); // 1,2
+// let arr = [1, 2, 3, 4, 5, 6, 7];
+// console.log(inBetween(3, 6)); // 3,4,5,6
+// console.log(inArray([1, 2, 10])); // 1,2
