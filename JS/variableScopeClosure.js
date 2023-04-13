@@ -185,43 +185,65 @@
 // console.log(byField("age"));
 
 //task10 -meine Lösung
+function makeArmy() {
+  let shooters = [];
+
+  let i = 0;
+  while (i < 10) {
+    let shooter = i;
+    shooters.push(shooter);
+    i++;
+  }
+  return shooters;
+}
+let army = makeArmy();
+console.log(army[0]); // 10 from the shooter number 0
+console.log(army[1]); // 10 from the shooter number 1
+console.log(army[2]); // 10 ...and so on.
+console.log(army[3]);
+console.log(army[4]);
+console.log(army[5]);
+console.log(army[6]);
+console.log(army[7]);
+console.log(army[8]);
+console.log(army[9]);
+console.log(army[10]);
+
+// //task10-lösung
+//mit for loop
+// function makeArmy() {
+//   let shooters = [];
+//   for (let i = 0; i < 10; i++) {
+//     let shooter = function () {
+//       // shooter function
+//       alert(i); // should show its number
+//     };
+//     shooters.push(shooter);
+//   }
+//   return shooters;
+// }
+// let army = makeArmy();
+
+// mit while loop
 // function makeArmy() {
 //   let shooters = [];
 
 //   let i = 0;
 //   while (i < 10) {
-//     let shooter = i;
+//     let j = i;
+//     let shooter = function () {
+//       // shooter function
+//       alert(j); // should show its number
+//     };
 //     shooters.push(shooter);
 //     i++;
 //   }
-//   return shooters;
-// }
-// let army = makeArmy();
-// console.log(army[0]); // 10 from the shooter number 0
-// console.log(army[1]); // 10 from the shooter number 1
-// console.log(army[2]); // 10 ...and so on.
-// console.log(army[3]);
-// console.log(army[4]);
-// console.log(army[5]);
-// console.log(army[6]);
-// console.log(army[7]);
-// console.log(army[8]);
-// console.log(army[9]);
-// console.log(army[10]);
-
-// //task10-lösung
-// function makeArmy() {
-
-//   let shooters = [];
-
-//   for(let i = 0; i < 10; i++) {
-//     let shooter = function() { // shooter function
-//       alert( i ); // should show its number
-//     };
-//     shooters.push(shooter);
-//   }
 
 //   return shooters;
 // }
 
 // let army = makeArmy();
+
+// // Now the code works correctly
+// army[0](); // 0
+// army[5](); // 5
