@@ -162,20 +162,66 @@
 // console.log(inBetween(3, 6)); // 3,4,5,6
 // console.log(inArray([1, 2, 10])); // 1,2
 
-//task9
-function byField(input) {
-  if (input === "name") {
-    return users.sort((a, b) => (a.name > b.name ? 1 : -1));
-  }
-  if (input === "age") {
-    return users.sort((a, b) => (a.age > b.age ? 1 : -1));
-  }
-}
+//task9-meine Lösung
+// function byField(input) {
+//   if (input === "name") {
+//     return users.sort((a, b) => (a.name > b.name ? 1 : -1));
+//   }
+//   if (input === "age") {
+//     return users.sort((a, b) => (a.age > b.age ? 1 : -1));
+//   }
+// }
+//task9-lösung
+// function byField(fieldName) {
+//   return users.sort((a, b) => (a.fieldName > b.fieldName ? 1 : -1));
+// }
 
-let users = [
-  { name: "John", age: 20, surname: "Johnson" },
-  { name: "Pete", age: 18, surname: "Peterson" },
-  { name: "Ann", age: 19, surname: "Hathaway" },
-];
-console.log(byField("name"));
-console.log(byField("age"));
+// let users = [
+//   { name: "John", age: 20, surname: "Johnson" },
+//   { name: "Pete", age: 18, surname: "Peterson" },
+//   { name: "Ann", age: 19, surname: "Hathaway" },
+// ];
+// console.log(byField("name"));
+// console.log(byField("age"));
+
+//task10 -meine Lösung
+// function makeArmy() {
+//   let shooters = [];
+
+//   let i = 0;
+//   while (i < 10) {
+//     let shooter = i;
+//     shooters.push(shooter);
+//     i++;
+//   }
+//   return shooters;
+// }
+// let army = makeArmy();
+// console.log(army[0]); // 10 from the shooter number 0
+// console.log(army[1]); // 10 from the shooter number 1
+// console.log(army[2]); // 10 ...and so on.
+// console.log(army[3]);
+// console.log(army[4]);
+// console.log(army[5]);
+// console.log(army[6]);
+// console.log(army[7]);
+// console.log(army[8]);
+// console.log(army[9]);
+// console.log(army[10]);
+
+// //task10-lösung
+// function makeArmy() {
+
+//   let shooters = [];
+
+//   for(let i = 0; i < 10; i++) {
+//     let shooter = function() { // shooter function
+//       alert( i ); // should show its number
+//     };
+//     shooters.push(shooter);
+//   }
+
+//   return shooters;
+// }
+
+// let army = makeArmy();
