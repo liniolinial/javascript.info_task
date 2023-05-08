@@ -216,35 +216,67 @@
 // console.log(counter());
 
 //task2-mein Versuch
-function sumTheNum() {
-  let count = 0;
+// function sumTheNum() {
+//   let count = 0;
 
-  function calculator(value) {
-    count += value;
-    return calculator;
-  }
-  calculator.set = (value) => (count = value);
-  return calculator;
-}
-
-let sum = sumTheNum();
-sum.set();
-console.log(sum(1));
-console.log(sum(1)(2)(3));
+//   function calculator(value) {
+//     count += value;
+//     return calculator;
+//   }
+//   calculator.toString = () => count;
+//   return calculator;
+// }
+// //^wert muss ich irgendwo zurückgeben
+// let sum = sumTheNum();
+// // sum.set(0);
+// console.log(sum(8));
+// console.log(sum(1)(2)(3));
+// [Function: calculator] { set: [Function (anonymous)] }
+// [Function: calculator] { set: [Function (anonymous)] }
 
 // task2-Lösung
-// function sum(a) {
-//   let currentSum = a;
-//   function f(b) {
-//     currentSum += b;
-//     return f;
+function sum(a) {
+  let currentSum = a;
+  function f(b) {
+    currentSum += b;
+    return f.toString;
+  }
+  // f.toString = function () {
+  //   return currentSum;
+  // };
+  f = function () {
+    return currentSum;
+  };
+
+  return f;
+}
+console.log(sum(1)(2)); // 3
+console.log(sum(5)(-1)(2)); // 6
+console.log(sum(6)(-1)(-2)(-3)); // 0
+console.log(sum(0)(1)(2)(3)(4)(5)); // 15
+
+//tobias Versuch
+// function calc(initialValue = 0) {
+//   // initialValue=0
+//   let value = initialValue;
+
+//   function add(addValue) {
+//     return calc((value += addValue));
 //   }
-//   f.toString = function () {
-//     return currentSum;
-//   };
-//   return f;
+//   function remove(removeValue) {
+//     return calc((value -= removeValue));
+//   }
+//   function multiply(multiplyValue) {
+//     return calc((value *= multiplyValue));
+//   }
+//   function divide(divideValue) {
+//     return calc((value /= divideValue));
+//   }
+//   function result() {
+//     return value;
+//   }
+//   return { add, remove, multiply, divide, result };
 // }
-// console.log(sum(1)(2).toString()); // 3
-// console.log(sum(5)(-1)(2).toString()); // 6
-// console.log(sum(6)(-1)(-2)(-3).toString()); // 0
-// console.log(sum(0)(1)(2)(3)(4)(5).toString()); // 15
+// let calculation = calc().add(10).add(5).remove(2).multiply(2).divide(4);
+// //vor console.log die Operator einsetzen
+// console.log(calculation.result());
