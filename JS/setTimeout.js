@@ -95,26 +95,21 @@ let timerId = setInterval(() => alert('tick'), 2000);
 //   let timerId = setInterval(() => console.log("from"), 1000);
 // }
 
-//version2
-// setTimeout(() => {
-//     clearInterval(timerId);
-//     console.log("to");
-//   }, 5000);
-// let j = 1;
-// setInterval(function () {
-//   func(j++);
-// }, 1000);
+// version1 mit setInterval
+function printNumbers(from, to) {
+  let timerId = setInterval(() => console.log(++from), 1000);
+  setTimeout(() => {
+    clearInterval(timerId);
+    console.log(to);
+  }, (to - from) * 1000);
+}
+printNumbers(3, 10);
 
 //version2 mit setTimeout
-function printNumbers(from, to) {
-  if (from < to) {
-    console.log(from);
-    setTimeout(printNumbers, 1000, ++from, to);
-  }
-}
-printNumbers(3, 8);
-
-// function sayHi(phrase, who) {
-//   console.log(phrase + ", " + who);
+// function printNumbers(from, to) {
+//   if (from < to) {
+//     console.log(from);
+//     setTimeout(printNumbers, 1000, ++from, to);
+//   }
 // }
-// setTimeout(sayHi, 1000, "Hello", "John");
+// printNumbers(3, 8);
