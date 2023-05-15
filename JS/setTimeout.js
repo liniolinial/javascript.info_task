@@ -90,22 +90,17 @@ let timerId = setInterval(() => alert('tick'), 2000);
 // });
 
 //task1
-//version1
+// // version1 mit setInterval
 // function printNumbers(from, to) {
-//   let timerId = setInterval(() => console.log("from"), 1000);
+//   let timerId = setInterval(() => console.log(++from), 1000);
+//   setTimeout(() => {
+//     clearInterval(timerId);
+//     console.log(to);
+//   }, (to - from) * 1000);
 // }
+// printNumbers(3, 10);
 
-// version1 mit setInterval
-function printNumbers(from, to) {
-  let timerId = setInterval(() => console.log(++from), 1000);
-  setTimeout(() => {
-    clearInterval(timerId);
-    console.log(to);
-  }, (to - from) * 1000);
-}
-printNumbers(3, 10);
-
-//version2 mit setTimeout
+// //version2 mit setTimeout
 // function printNumbers(from, to) {
 //   if (from < to) {
 //     console.log(from);
@@ -113,3 +108,13 @@ printNumbers(3, 10);
 //   }
 // }
 // printNumbers(3, 8);
+
+//task2
+let i = 0;
+
+setTimeout(() => console.log(i), 100); // ?
+
+// assume that the time to execute this function is >100ms
+for (let j = 0; j < 100000000; j++) {
+  i++;
+}
