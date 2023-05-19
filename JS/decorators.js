@@ -223,3 +223,131 @@
 // for (let args of work.calls) {
 //   console.log("call:" + args.join()); // "call:1,2", "call:4,5"
 // }
+
+//task2
+//erster Versuch
+// function f(x) {
+//   console.log(x);
+// }
+
+// let num = x;
+// let counter = 0;
+
+// let timerId = setTimeout(function delay(f, num) {
+//   if (counter < 4) {
+//     num *= 1;
+//   } else {
+//     clearTimeout(timerId);
+//   }
+//   counter++;
+
+//   timerId = setTimeout(delay, num);
+// }, num);
+
+// let f1000 = delay(f, 1000);
+// let f1500 = delay(f, 1500);
+
+// f1000("test"); // shows "test" after 1000ms
+// f1500("test"); // shows "test" after 1500ms
+
+//zweiter Versuch
+// function f(x) {
+//   console.log(x);
+// }
+// //create wrapper
+// function delay(func, ms) {
+//   let counter = 0;
+//   let timerId;
+
+//   function delayedFunction(...args) {
+//     if (counter < 3) {
+//       ms *= 1;
+//     } else {
+//       clearTimeout(timerId);
+//     }
+//     counter++;
+
+//     timerId = setTimeout(delayedFunction, ms);
+//     return func.apply(this, args);
+//   }
+
+//   return delayedFunction;
+// }
+// //
+
+// let f1000 = delay(f, 1000);
+// let f1500 = delay(f, 1500);
+
+// f1000("test"); // zeigt "test" nach 1000ms
+// f1500("test"); // zeigt "test" nach 1500ms
+
+//test- erklärung über call von Decorator
+// function test() {
+//   this.log();
+// }
+// test.call({
+//   log() {
+//     console.log("Test Log");
+//   },
+// });
+// test.call({
+//   log() {
+//     console.log("Test Log 2");
+//   },
+// });
+
+//typescript
+// function CallLog(fn: (a: string, b: string) => number) {
+//   console.log("test was called");
+//   return fn;
+// }
+// // @CallLog
+// function test(a: string, b: string) {
+//   return a + b;
+// }
+// test(5, 5); // test was called, 10
+// test(4, 5); // test was called, 9
+
+//tobias Erklärung
+//ohne arrow function
+// function f(x) {
+//   console.log(x);
+// }
+
+// //create wrapperfunction
+// function delay(func, ms) {
+//   function delayedFunction(...args) {
+//     function callbackFunction() {
+//       func.call(this, ...args);
+//     }
+
+//     setTimeout(callbackFunction, ms);
+//   }
+//   return delayedFunction;
+// }
+// //
+// let f1000 = delay(f, 1000);
+// let f1500 = delay(f, 1500);
+
+// f1000("test"); // zeigt "test" nach 1000ms
+
+// f1500("test"); // zeigt "test" nach 1500ms
+
+//mit arrow function
+function f(x) {
+  console.log(x);
+}
+//create wrapperfunction
+function delay(func, ms) {
+  function delayedFunction(...args) {
+    setTimeout(() => func.call(this, ...args), ms);
+  }
+  return delayedFunction;
+}
+//
+let f1000 = delay(f, 1000);
+let f1500 = delay(f, 1500);
+
+f1000("test"); // zeigt "test" nach 1000ms
+
+f1500("test"); // zeigt "test" nach 1500ms
