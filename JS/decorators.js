@@ -334,20 +334,52 @@
 // f1500("test"); // zeigt "test" nach 1500ms
 
 //mit arrow function
-function f(x) {
-  console.log(x);
-}
-//create wrapperfunction
-function delay(func, ms) {
+// function f(x) {
+//   console.log(x);
+// }
+// //create wrapperfunction
+// function delay(func, ms) {
+//   function delayedFunction(...args) {
+//     setTimeout(() => func.call(this, ...args), ms);
+//   }
+//   return delayedFunction;
+// }
+// //
+// let f1000 = delay(f, 1000);
+// let f1500 = delay(f, 1500);
+
+// f1000("test"); // zeigt "test" nach 1000ms
+
+// f1500("test"); // zeigt "test" nach 1500ms
+
+//task3
+function debounce(func, ms) {
+  let timeout;
   function delayedFunction(...args) {
-    setTimeout(() => func.call(this, ...args), ms);
+    // setTimeout(() => func.call(this, ...args), ms);
+    clearTimeout(timeout);
+    return (timeout = setTimeout(() => func.call(this, ...args), ms));
   }
   return delayedFunction;
 }
-//
-let f1000 = delay(f, 1000);
-let f1500 = delay(f, 1500);
+let f = debounce(console.log, 1000);
 
-f1000("test"); // zeigt "test" nach 1000ms
+f("a");
+setTimeout(() => f("b"), 200);
+setTimeout(() => f("c"), 500);
+// debounced function waits 1000ms after the last call and then runs: alert("c")
 
-f1500("test"); // zeigt "test" nach 1500ms
+//task3 lösung
+// let f = debounce(console.log, 1000);
+
+// function debounce(func, ms) {
+//   let timeout;
+//   return function () {
+//     clearTimeout(timeout);
+//     timeout = setTimeout(() => func.apply(this, arguments), ms);
+//   };
+// }
+
+// f("a");
+// setTimeout(() => f("b"), 200);
+// setTimeout(() => f("c"), 500);
