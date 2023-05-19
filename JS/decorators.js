@@ -353,21 +353,21 @@
 // f1500("test"); // zeigt "test" nach 1500ms
 
 //task3
-function debounce(func, ms) {
-  let timeout;
-  function delayedFunction(...args) {
-    // setTimeout(() => func.call(this, ...args), ms);
-    clearTimeout(timeout);
-    return (timeout = setTimeout(() => func.call(this, ...args), ms));
-  }
-  return delayedFunction;
-}
-let f = debounce(console.log, 1000);
+// function debounce(func, ms) {
+//   let timeout;
+//   function delayedFunction(...args) {
+//     // setTimeout(() => func.call(this, ...args), ms);
+//     clearTimeout(timeout);
+//     return (timeout = setTimeout(() => func.call(this, ...args), ms));
+//   }
+//   return delayedFunction;
+// }
+// let f = debounce(console.log, 1000);
 
-f("a");
-setTimeout(() => f("b"), 200);
-setTimeout(() => f("c"), 500);
-// debounced function waits 1000ms after the last call and then runs: alert("c")
+// f("a");
+// setTimeout(() => f("b"), 200);
+// setTimeout(() => f("c"), 500);
+// // debounced function waits 1000ms after the last call and then runs: alert("c")
 
 //task3 lösung
 // let f = debounce(console.log, 1000);
@@ -383,3 +383,176 @@ setTimeout(() => f("c"), 500);
 // f("a");
 // setTimeout(() => f("b"), 200);
 // setTimeout(() => f("c"), 500);
+
+//task4
+// // zweite Idee_ throttle mit if Kondition für show1 und show3
+// function f(a) {
+//   console.log(a);
+// }
+
+// function throttle(func, ms) {
+//   let counter = 0;
+//   let timeout;
+//   return function (...args) {
+//     if ((counter = 1)) {
+//       timeout = setTimeout(() => func.call(this, ...args), ms);
+//     }
+//     if (counter > 1) {
+//       timeout = setTimeout(() => func.call(this, ...args), ms);
+//       clearTimeout(timeout);
+//     }
+//     // timeout = setTimeout(() => func.call(this, ...args), ms);
+//     // clearTimeout(timeout);
+//   };
+// }
+// // f1000 passes calls to f at maximum once per 1000 ms
+// let f1000 = throttle(f, 1000);
+
+// f1000(1); // shows 1
+// f1000(2); // (throttling, 1000ms not out yet)
+// f1000(3); // (throttling, 1000ms not out yet)
+
+// // when 1000 ms time out...
+// // ...outputs 3, intermediate value 2 was ignored
+
+//zweiter Versuch mit Chapt GPT 2-1
+// function f(a) {
+//   console.log(a);
+// }
+
+// function throttle(func, ms) {
+//   let isThrottled = false;
+//   let savedArgs;
+//   let savedThis;
+
+//   function wrapper(...args) {
+//     if (isThrottled) {
+//       savedArgs = args;
+//       savedThis = this;
+//       return;
+//     }
+
+//     func.call(this, ...args);
+//     isThrottled = true;
+
+//     setTimeout(() => {
+//       isThrottled = false;
+//       if (savedArgs) {
+//         wrapper.call(savedThis, savedArgs);
+//         savedArgs = savedThis = null;
+//       }
+//     }, ms);
+//   }
+
+//   return wrapper;
+// }
+
+// let f1000 = throttle(f, 1000);
+
+// f1000(1); // zeigt 1
+// f1000(2); // (throttling, 1000ms noch nicht abgelaufen)
+// f1000(3); // (throttling, 1000ms noch nicht abgelaufen)
+
+//2-2- es zeigt nur 1
+// function f(a) {
+//   console.log(a);
+// }
+
+// function throttle(func, ms) {
+//   let isThrottled = false;
+
+//   return function (...args) {
+//     if (!isThrottled) {
+//       func.call(this, ...args);
+//       isThrottled = true;
+
+//       setTimeout(() => {
+//         isThrottled = false;
+//       }, ms);
+//     }
+//   };
+// }
+
+// let f1000 = throttle(f, 1000);
+
+// f1000(1); // zeigt 1
+// f1000(2); // (throttling, 1000ms noch nicht abgelaufen)
+// f1000(3); // (throttling, 1000ms noch nicht abgelaufen)
+
+//2-3 mit call
+// function f(a) {
+//   console.log(a);
+// }
+
+// function throttle(func, ms) {
+//   let isThrottled = false;
+//   let savedArgs;
+//   let savedThis;
+
+//   function wrapper(...args) {
+//     savedArgs = args;
+//     savedThis = this;
+
+//     if (isThrottled) {
+//       return;
+//     }
+
+//     func.call(this, ...args);
+//     isThrottled = true;
+
+//     setTimeout(() => {
+//       isThrottled = false;
+//       if (savedArgs) {
+//         wrapper.call(savedThis, ...savedArgs);
+//         savedArgs = savedThis = null;
+//       }
+//     }, ms);
+//   }
+
+//   return wrapper;
+// }
+
+// let f1000 = throttle(f, 1000);
+
+// f1000(1); // zeigt 1
+// f1000(2); // (throttling, 1000ms noch nicht abgelaufen)
+// f1000(3); // zeigt 3
+
+//task4 Lösung
+function throttle(func, ms) {
+  let isThrottled = false,
+    savedArgs,
+    savedThis;
+
+  function wrapper() {
+    if (isThrottled) {
+      // (2)
+      savedArgs = arguments;
+      savedThis = this;
+      return;
+    }
+    isThrottled = true;
+
+    func.apply(this, arguments); // (1)
+
+    setTimeout(function () {
+      isThrottled = false; // (3)
+      if (savedArgs) {
+        wrapper.apply(savedThis, savedArgs);
+        savedArgs = savedThis = null;
+      }
+    }, ms);
+  }
+
+  return wrapper;
+}
+function f(a) {
+  console.log(a);
+}
+
+// f1000 passes calls to f at maximum once per 1000 ms
+let f1000 = throttle(f, 1000);
+
+f1000(1); // shows 1
+f1000(2); // (throttling, 1000ms not out yet)
+f1000(3); // (throttling, 1000ms not out yet)
