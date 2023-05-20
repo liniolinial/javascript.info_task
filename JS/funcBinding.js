@@ -189,3 +189,14 @@
 // f();
 
 //task3
+function sayHi() {
+  console.log(this.name);
+}
+sayHi.test = 5;
+console.log(sayHi.test);
+
+// let bound = sayHi.bind({
+//   name: "John",
+// }); // John
+
+// console.log(bound.test); // what will be the output? why?
