@@ -189,14 +189,45 @@
 // f();
 
 //task3
-function sayHi() {
-  console.log(this.name);
-}
-sayHi.test = 5;
-console.log(sayHi.test);
+// function sayHi() {
+//   console.log(this.name);
+// }
+// sayHi.test = 5;
+// console.log(sayHi.test);
 
 // let bound = sayHi.bind({
 //   name: "John",
 // }); // John
 
 // console.log(bound.test); // what will be the output? why?
+
+//task4
+function askPassword(ok, fail) {
+  let password = prompt.log("Password?", "");
+  if (password == "rockstar") ok();
+  else fail();
+}
+
+let user = {
+  name: "John",
+
+  loginOk() {
+    //local function - nicht global
+    alert(`${this.name} logged in`);
+  },
+
+  loginFail() {
+    //local function - nicht global
+    alert(`${this.name} failed to log in`);
+  },
+};
+
+// for (let key in user) {
+//   if (typeof user[key] == "function") {
+//     user[key] = user[key].bind(user);
+//   }
+// }
+
+// askPassword(() => user.loginOk(), user.loginFail()); //aufgabe- hier ändern
+// let askPasswordUser = askPassword.bind(user);
+askPassword(user.loginOk.bind(user), user.loginFail.bind(user));
