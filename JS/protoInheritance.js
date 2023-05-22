@@ -7,7 +7,7 @@
 
 // rabbit.__proto__ = animal; // sets rabbit.[[Prototype]] = animal
 
-//from bottom to up
+// from bottom to up
 // let animal = {
 //   eats: true,
 // };
@@ -164,20 +164,71 @@
 // }
 
 //task1
-let animal = {
-  jumps: null,
+// let animal = {
+//   jumps: null,
+// };
+// let rabbit = {
+//   __proto__: animal,
+//   jumps: true,
+// };
+
+// console.log(rabbit.jumps); // ? (1) true
+
+// delete rabbit.jumps;
+
+// console.log(rabbit.jumps); // ? (2) null
+
+// delete animal.jumps;
+
+// console.log(rabbit.jumps); // ? (3) undefined
+
+//task2
+let head = {
+  glasses: 1,
+  __proto__: null,
 };
-let rabbit = {
-  __proto__: animal,
-  jumps: true,
+
+let table = {
+  pen: 3,
+  __proto__: head,
 };
 
-console.log(rabbit.jumps); // ? (1) true
+let bed = {
+  sheet: 1,
+  pillow: 2,
+  __proto__: table,
+};
 
-delete rabbit.jumps;
+let pockets = {
+  money: 2000,
+  __proto__: bed,
+};
 
-console.log(rabbit.jumps); // ? (2) null
+// //teil1
+// console.log(pockets.pen);
+// console.log(bed.glasses);
+//teil2
+// console.log(pockets.glasses);
+console.log(head.glasses);
 
-delete animal.jumps;
+///////
+// let animal = {
+//   eats: true,
+//   walk() {
+//     console.log("Animal walk");
+//   },
+// };
 
-console.log(rabbit.jumps); // ? (3) undefined
+// let rabbit = {
+//   jumps: true,
+//   __proto__: animal,
+// };
+
+// let longEar = {
+//   earLength: 10,
+//   __proto__: rabbit,
+// };
+
+// // walk is taken from the prototype chain
+// longEar.walk(); // Animal walk
+// console.log(longEar.jumps); // true (from rabbit)
