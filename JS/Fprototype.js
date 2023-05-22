@@ -68,11 +68,39 @@
 // // now constructor is also correct, because we added it
 
 //task1
-function Rabbit() {}
-Rabbit.prototype = {
-  eats: true,
-};
+// function Rabbit() {}
+// Rabbit.prototype = {
+//   eats: true,
+// };
 
-let rabbit = new Rabbit();
-Rabbit.prototype = {};
-console.log(rabbit.eats); // true
+// let rabbit = new Rabbit();
+// Rabbit.prototype = {};
+// console.log(rabbit.eats); // true
+
+//task2
+//in right way
+// function Obj(name) {
+//   this.name = name;
+//   console.log(name);
+// }
+// let obj = new Obj("object one");
+// let obj2 = new obj.constructor("object two");
+
+//in wrong way
+// function Obj() {}
+// Obj.prototype = {
+//   jumps: true,
+// };
+// let obj2 = new obj2.constructor("object two");
+// console.log(obj2.constructor === Obj); // false
+
+//task2-lösung-wrongway
+function Obj(name) {
+  this.name = name;
+}
+Obj.prototype = {}; // (*)
+
+let obj = new Obj("John");
+let obj2 = new obj.constructor("Pete");
+
+console.log(obj2.name); // undefined
