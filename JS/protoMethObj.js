@@ -88,31 +88,48 @@ let dictionary = Object.create(null);
 // let key = console.log("apple");
 // dictionary[key] = "__proto__";
 
-dictionary.apple = "Apple";
-dictionary.__proto__ = "test";
+// dictionary.apple = "Apple";
+// dictionary.__proto__ = "test";
 
-for (let key in dictionary) {
-  console.log(key); // "apple", then "__proto__"
+// for (let key in dictionary) {
+//   console.log(key); // "apple", then "__proto__"
+// }
+
+// console.log(dictionary); //
+
+// //lösung:
+// let dictionary = Object.create(null, {
+//   toString: {
+//     // define toString property
+//     value() {
+//       // the value is a function
+//       return Object.keys(this).join();
+//     },
+//   },
+// });
+
+// dictionary.apple = "Apple";
+// dictionary.__proto__ = "test";
+
+// for (let key in dictionary) {
+//   alert(key); // "apple", then "__proto__"
+// }
+
+// alert(dictionary); //
+
+//task2
+function Rabbit(name) {
+  this.name = name;
 }
+Rabbit.prototype.sayHi = function () {
+  console.log(this.name);
+};
 
-console.log(dictionary); //
+let rabbit = new Rabbit("Rabbit");
+console.log(rabbit); // "Rabbit"
+//These calls do the same thing or not?
 
-//lösung:
-let dictionary = Object.create(null, {
-  toString: {
-    // define toString property
-    value() {
-      // the value is a function
-      return Object.keys(this).join();
-    },
-  },
-});
-
-dictionary.apple = "Apple";
-dictionary.__proto__ = "test";
-
-for (let key in dictionary) {
-  alert(key); // "apple", then "__proto__"
-}
-
-alert(dictionary); //
+rabbit.sayHi();
+Rabbit.prototype.sayHi();
+Object.getPrototypeOf(rabbit).sayHi();
+rabbit.__proto__.sayHi();
