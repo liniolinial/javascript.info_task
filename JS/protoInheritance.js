@@ -183,52 +183,44 @@
 // console.log(rabbit.jumps); // ? (3) undefined
 
 //task2
-let head = {
-  glasses: 1,
-  __proto__: null,
-};
-
-let table = {
-  pen: 3,
-  __proto__: head,
-};
-
-let bed = {
-  sheet: 1,
-  pillow: 2,
-  __proto__: table,
-};
-
-let pockets = {
-  money: 2000,
-  __proto__: bed,
-};
-
-// //teil1
-// console.log(pockets.pen);
-// console.log(bed.glasses);
-//teil2
-// console.log(pockets.glasses);
-console.log(head.glasses);
-
-///////
-// let animal = {
-//   eats: true,
-//   walk() {
-//     console.log("Animal walk");
-//   },
+// let head = {
+//   glasses: 1,
+//   __proto__: null,
 // };
 
-// let rabbit = {
-//   jumps: true,
-//   __proto__: animal,
+// let table = {
+//   pen: 3,
+//   __proto__: head,
 // };
 
-// let longEar = {
-//   earLength: 10,
-//   __proto__: rabbit,
+// let bed = {
+//   sheet: 1,
+//   pillow: 2,
+//   __proto__: table,
 // };
 
-// // walk is taken from the prototype chain
-// longEar.walk(); // Animal walk
-// console.log(longEar.jumps); // true (from rabbit)
+// let pockets = {
+//   money: 2000,
+//   __proto__: bed,
+// };
+
+// // //teil1
+// // console.log(pockets.pen);
+// // console.log(bed.glasses);
+// //teil2
+// // console.log(pockets.glasses);
+// console.log(head.glasses);
+
+//task3
+let animal = {
+  eat() {
+    this.full = true;
+  },
+};
+
+let rabbit = {
+  __proto__: animal,
+};
+
+rabbit.eat();
+//rabbit
