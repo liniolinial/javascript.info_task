@@ -75,12 +75,54 @@
 // f.defer(1000); // shows "Hello!" after 1 second
 
 //task1-lösung
+// Function.prototype.defer = function (ms) {
+//   setTimeout(this, ms);
+// };
+
+// function f() {
+//   console.log("Hello!");
+// }
+
+// f.defer(1000); // shows "Hello!" after 1 sec
+
+//task2
+
+//wrapper
+// function f(a, b) {
+//   console.log(a + b);
+// }
+
+// Function.prototype.defer = function (ms) {
+//   let func = this;
+//   return function () {
+//     let args = arguments;
+//     setTimeout(() => func.call(this, args), ms);
+//     sum = function f(a, b) {
+//       console.log(a + b);
+//     };
+//   };
+// };
+
+// // return delayedFunction;
+
+// f.defer(1000)(1, 2); // shows 3 after 1 second
+
+// Function.prototype.defer = function (this,...args) {
+//   setTimeout(this, ms);
+// };
+// f.defer(1000)(1, 2); // shows 3 after 1 second
+
+//task2 lösung:
 Function.prototype.defer = function (ms) {
-  setTimeout(this, ms);
+  let f = this;
+  return function (...args) {
+    setTimeout(() => f.call(this, ...args), ms);
+  };
 };
 
-function f() {
-  console.log("Hello!");
+// check it
+function f(a, b) {
+  console.log(a + b);
 }
 
-f.defer(1000); // shows "Hello!" after 1 sec
+f.defer(1000)(1, 2); // shows 3 after 1 sec
