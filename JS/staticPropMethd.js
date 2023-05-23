@@ -143,17 +143,26 @@
 // console.log(Rabbit.prototype.__proto__ === Animal.prototype); // true
 
 //task1 1-1
-// class Rabbit {
-//   constructor(name) {
-//     this.name = name;
-//   }
-// }
+class Rabbit {
+  constructor(name) {
+    this.name = name;
+  }
+}
 
-// let rabbit = new Rabbit("Rab");
+let rabbit = new Rabbit("Rab");
+// hasOwnProperty method is from Object.prototype
+console.log(rabbit.hasOwnProperty("name")); // true
+console.log(rabbit.name);
 
-// // hasOwnProperty method is from Object.prototype
-// console.log(rabbit.hasOwnProperty("name")); // true
-// console.log(rabbit.name);
+// task1-1 lösung
+class Rabbit {}
+
+alert(Rabbit.prototype.__proto__ === Object.prototype); // (1) true
+alert(Rabbit.__proto__ === Object); // (2) false (!)
+alert(Rabbit.__proto__ === Function.prototype); // as any function by default
+
+// error, no such function in Rabbit
+alert(Rabbit.getOwnPropertyNames({ a: 1, b: 2 })); // Error
 
 //task1 1-2
 // class Rabbit extends Object {
