@@ -143,26 +143,29 @@
 // console.log(Rabbit.prototype.__proto__ === Animal.prototype); // true
 
 //task1 1-1
-class Rabbit {
-  constructor(name) {
-    this.name = name;
-  }
-}
+// class Rabbit {
+//   constructor(name) {
+//     this.name = name;
+//   }
+// }
 
-let rabbit = new Rabbit("Rab");
-// hasOwnProperty method is from Object.prototype
-console.log(rabbit.hasOwnProperty("name")); // true
-console.log(rabbit.name);
+// let rabbit = new Rabbit("Rab");
+// // hasOwnProperty method is from Object.prototype
+// console.log(rabbit.hasOwnProperty("name")); // true
+// console.log(rabbit.name); //Rab
 
-// task1-1 lösung
-class Rabbit {}
+//Rabbit provides access to the static methods of Object via Rabbit, like this:
+class Rabbit extends Object {}
+// normally we call Object.getOwnPropertyNames
+console.log(Rabbit.getOwnPropertyNames({ a: 1, b: 2 })); // a,b
 
-alert(Rabbit.prototype.__proto__ === Object.prototype); // (1) true
-alert(Rabbit.__proto__ === Object); // (2) false (!)
-alert(Rabbit.__proto__ === Function.prototype); // as any function by default
+// task1-1 lösung DEMO Version
+// console.log(Rabbit.prototype.__proto__ === Object.prototype); // (1) true
+// console.log(Rabbit.__proto__ === Object); // (2) false (!)
+// console.log(Rabbit.__proto__ === Function.prototype); // as any function by default
 
-// error, no such function in Rabbit
-alert(Rabbit.getOwnPropertyNames({ a: 1, b: 2 })); // Error
+// // error, no such function in Rabbit
+// console.log(Rabbit.getOwnPropertyNames({ a: 1, b: 2 })); // Error
 
 //task1 1-2
 // class Rabbit extends Object {
