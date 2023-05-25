@@ -166,12 +166,99 @@
 // promise.then(console.log);
 
 //task2
-function delay(ms) {
-  // your code
-  let promise = new Promise((resolve) => {
-    setTimeout(() => resolve("runs after 3 seconds"), ms);
-  });
-  return promise;
-}
+// function delay(ms) {
+//   // your code
+//   let promise = new Promise((resolve) => {
+//     setTimeout(() => resolve("runs after 3 seconds"), ms);
+//   });
+//   return promise;
+// }
 
-delay(3000).then(() => console.log("runs after 3 seconds"));
+// delay(3000).then(() => console.log("runs after 3 seconds"));
+
+//task3
+//callback
+//falscher versuch
+// function showCircle(src, div) {
+//   let promise = new Promise((resolve, reject) => {
+//     div.add = () => resolve("message-ball");
+//     // div.append = () => resolve("Hello, world!");
+//     // div.append = () => reject(new Error(`Script load error for ${div}`));
+//   })
+//     .finally(() => console.log("Hello, world!"))
+//     .then((result) => console.log(result));
+//   //   return promise;
+// }
+
+// showCircle(150, 150, 100, (div) => {
+//   div.classList.add("message-ball");
+//   div.append("Hello, world!");
+// });
+
+// //   const loadScript = (src, callback) => {
+// //     let script = document.createElement("script");
+// //     script.src = src;
+// //     // Rest of your code...
+// //   };
+
+//Lösung tricky
+// <!DOCTYPE html>
+// <html>
+
+// <head>
+//   <meta charset="utf-8">
+//   <style>
+//     .message-ball {
+//       font-size: 20px;
+//       line-height: 200px;
+//       text-align: center;
+//     }
+//     .circle {
+//       transition-property: width, height;
+//       transition-duration: 2s;
+//       position: fixed;
+//       transform: translateX(-50%) translateY(-50%);
+//       background-color: red;
+//       border-radius: 50%;
+//     }
+//   </style>
+// </head>
+
+// <body>
+
+//   <button onclick="go()">Click me</button>
+
+//   <script>
+
+//   function go() {
+//     showCircle(150, 150, 100).then(div => {
+//       div.classList.add('message-ball');
+//       div.append("Hello, world!");
+//     });
+//   }
+
+//   function showCircle(cx, cy, radius) {
+//     let div = document.createElement('div');
+//     div.style.width = 0;
+//     div.style.height = 0;
+//     div.style.left = cx + 'px';
+//     div.style.top = cy + 'px';
+//     div.className = 'circle';
+//     document.body.append(div);
+
+//     return new Promise(resolve => {
+//       setTimeout(() => {
+//         div.style.width = radius * 2 + 'px';
+//         div.style.height = radius * 2 + 'px';
+
+//         div.addEventListener('transitionend', function handler() {
+//           div.removeEventListener('transitionend', handler);
+//           resolve(div);
+//         });
+//       }, 0);
+//     })
+//   }
+//   </script>
+
+// </body>
+// </html>
