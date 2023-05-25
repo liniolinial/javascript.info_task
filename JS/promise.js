@@ -164,3 +164,14 @@
 // });
 
 // promise.then(console.log);
+
+//task2
+function delay(ms) {
+  // your code
+  let promise = new Promise((resolve) => {
+    setTimeout(() => resolve("runs after 3 seconds"), ms);
+  });
+  return promise;
+}
+
+delay(3000).then(() => console.log("runs after 3 seconds"));
