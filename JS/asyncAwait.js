@@ -152,15 +152,78 @@
 
 // loadJson("https://javascript.info/no-such-user.json").catch(alert); // Error: 404
 
-//rewrite
-async function loadJson(url) {
-  let response = await fetch(url);
-  let user = await response.json();
-  if (response.status == 200) {
-    return user;
-  } else {
-    throw new Error(response.status);
+//rewrite-meine Lösung
+// async function loadJson(url) {
+//   let response = await fetch(url);
+//   let user = await response.json();
+//   if (response.status == 200) {
+//     return user;
+//   } else {
+//     throw new Error(response.status);
+//   }
+// }
+
+// loadJson("https://javascript.info/no-such-user.json").catch(conosle.log); // Error: 404
+
+//task2
+class HttpError extends Error {
+  constructor(response) {
+    super(`${response.status} for ${response.url}`);
+    this.name = "HttpError";
+    this.response = response;
   }
 }
 
-loadJson("https://javascript.info/no-such-user.json").catch(conosle.log); // Error: 404
+async function loadJson(url) {
+  let response = await fetch(url);
+    if (response.status == 200) {
+      return response.json();
+    } else {
+      throw new HttpError(response);
+    }
+  };
+
+
+// Ask for a user name until github returns a valid user
+async function demoGithubUser() {
+let user;
+if(true){
+    let name = prompt("Enter a name?", "iliakan");
+    if()
+    return loadJson(`https://api.github.com/users/${name}`)
+} 
+    .then((user) => {
+      alert(`Full name: ${user.name}.`);
+      return user;
+    })
+    .catch((err) => {
+      if (err instanceof HttpError && err.response.status == 404) {
+        alert("No such user, please reenter.");
+        return demoGithubUser();
+      } else {
+        throw err;
+      }
+    });
+}
+
+demoGithubUser();
+
+//   / class Thenable {
+//   constructor(num) {
+//     this.num = num;
+//   }
+//   then(resolve, reject) {
+//     console.log(resolve);
+//     // resolve with this.num*2 after 1000ms
+//     setTimeout(() => resolve(this.num * 2), 1000); // (*)
+//   }
+// }
+
+// async function f() {
+//   // waits for 1 second, then result becomes 2
+//   let result = await new Thenable(1);
+//   console.log(result);
+// }
+// f();
+// // [Function (anonymous)]
+// // 2
