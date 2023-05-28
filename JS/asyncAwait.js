@@ -166,47 +166,46 @@
 // loadJson("https://javascript.info/no-such-user.json").catch(conosle.log); // Error: 404
 
 //task2
-class HttpError extends Error {
-  constructor(response) {
-    super(`${response.status} for ${response.url}`);
-    this.name = "HttpError";
-    this.response = response;
-  }
-}
+// class HttpError extends Error {
+//   constructor(response) {
+//     super(`${response.status} for ${response.url}`);
+//     this.name = "HttpError";
+//     this.response = response;
+//   }
+// }
 
-async function loadJson(url) {
-  let response = await fetch(url);
-    if (response.status == 200) {
-      return response.json();
-    } else {
-      throw new HttpError(response);
-    }
-  };
+// async function loadJson(url) {
+//   let response = await fetch(url);
+//     if (response.status == 200) {
+//       return response.json();
+//     } else {
+//       throw new HttpError(response);
+//     }
+//   };
 
+// // Ask for a user name until github returns a valid user
+// async function demoGithubUser() {
+// let user;
+// if(true){
+//     let name = prompt("Enter a name?", "iliakan");
+//     if()
+//     return loadJson(`https://api.github.com/users/${name}`)
+// }
+//     .then((user) => {
+//       alert(`Full name: ${user.name}.`);
+//       return user;
+//     })
+//     .catch((err) => {
+//       if (err instanceof HttpError && err.response.status == 404) {
+//         alert("No such user, please reenter.");
+//         return demoGithubUser();
+//       } else {
+//         throw err;
+//       }
+//     });
+// }
 
-// Ask for a user name until github returns a valid user
-async function demoGithubUser() {
-let user;
-if(true){
-    let name = prompt("Enter a name?", "iliakan");
-    if()
-    return loadJson(`https://api.github.com/users/${name}`)
-} 
-    .then((user) => {
-      alert(`Full name: ${user.name}.`);
-      return user;
-    })
-    .catch((err) => {
-      if (err instanceof HttpError && err.response.status == 404) {
-        alert("No such user, please reenter.");
-        return demoGithubUser();
-      } else {
-        throw err;
-      }
-    });
-}
-
-demoGithubUser();
+// demoGithubUser();
 
 //   / class Thenable {
 //   constructor(num) {
@@ -227,3 +226,31 @@ demoGithubUser();
 // f();
 // // [Function (anonymous)]
 // // 2
+
+//task3-meine lösung
+async function wait() {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return 10;
+}
+
+function f() {
+  // ...what should you write here?
+  // we need to call async wait() and wait to get 10
+  // remember, we can't use "await"
+  wait.then(console.log).catch(console.log);
+}
+f();
+
+//task3 lösung
+async function wait() {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  return 10;
+}
+
+function f() {
+  // shows 10 after 1 second
+  wait().then((result) => alert(result));
+}
+
+f();
