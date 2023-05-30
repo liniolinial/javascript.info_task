@@ -13,13 +13,13 @@
 // // // now let's call user.hi or user.bye depending on the name
 // (user.name == "John" ? user.hi : user.bye)(); // undefined -> Error!
 
-let user = {
-  name: "John",
-  hi() {
-    console.log(this.name);
-  },
-};
-user.hi();
+// let user = {
+//   name: "John",
+//   hi() {
+//     console.log(this.name);
+//   },
+// };
+// user.hi();
 
 //lösung
 // // split getting and calling the method in two lines
@@ -42,3 +42,22 @@ user.hi();
 // };
 // // user.go();
 // user.go;
+
+//task2
+let obj, method;
+
+obj = {
+  go: function () {
+    console.log(this);
+  },
+};
+
+// obj.go(); // (1) [object Object]
+
+// obj.go(); // (2) [object Object]
+
+(method = obj.go)(); // (3) undefined
+
+// method = obj.go(); // (3) [object Object]
+
+// (obj.go || obj.stop)(); // (4) undefined
