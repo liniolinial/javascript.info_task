@@ -10,7 +10,25 @@
 
 <body>
     <h1 class="test1">this is a test h1</h1>
-    <script defer src="JS/dateTime.js"></script>
+    <!-- <script defer src="JS/dynamicImport.js">
+        async function load() {
+            let say = await import('JS/dynamicImport.js');
+            say.hi(); // Hello!
+            say.bye(); // Bye!
+            say.default(); // Module loaded (export default)!
+        }
+    </script>
+    <button onclick="load()">Click me</button> -->
+    <script>
+        async function load() {
+            let say = await import('./JS/dynamicImport.js');
+            say.hi(); // Hello!
+            say.bye(); // Bye!
+            say.default(); // Module loaded (export default)!
+        }
+    </script>
+    <button onclick="load()">Click me</button>
+
 </body>
 
 </html>
