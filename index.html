@@ -41,9 +41,9 @@
     </script> -->
 
     <!-- mark the div to show "name" here -->
-    <div show-info="name"></div>
+    <!-- <div show-info="name"></div> -->
     <!-- and age here -->
-    <div show-info="age"></div>
+    <!-- <div show-info="age"></div>
 
     <script>
         // the code finds an element with the mark and shows what's requested
@@ -57,6 +57,30 @@
             let field = div.getAttribute('show-info');
             div.innerHTML = user[field]; // first Pete into "name", then 25 into "age"
         }
+    </script> -->
+
+    <!-- task2 -->
+    <a name="list">the list</a>
+    <ul>
+        <li><a href="http://google.com">http://google.com</a></li>
+        <li><a href="/tutorial">/tutorial.html</a></li>
+        <li><a href="local/path">local/path</a></li>
+        <li><a href="ftp://ftp.com/my.zip">ftp://ftp.com/my.zip</a></li>
+        <li><a href="http://nodejs.org">http://nodejs.org</a></li>
+        <li><a href="http://internal.com/test">http://internal.com/test</a></li>
+    </ul>
+
+    <script>
+        let links = document.querySelectorAll("a");
+
+        // iterating
+        links.forEach((link) => {
+            let href = link.getAttribute("href");
+
+            if (href.includes("://") && !href.startsWith("http://internal.com")) {
+                link.style.color = "orange";
+            }
+        });
     </script>
 </body>
 
