@@ -281,7 +281,8 @@
         let container = document.getElementById('container');
         createTree(container, data);
     </script> -->
-    <div id="container"></div>
+    <!-- task5 -->
+    <!-- <div id="container"></div>
 
     <script>
         let data = {
@@ -317,6 +318,77 @@
             return ul || li;
         }
         createTree(container, data);
+    </script> -->
+    <!-- task6 -->
+    <ul>
+        <li>Animals
+            <ul>
+                <li>Mammals
+                    <ul>
+                        <li>Cows</li>
+                        <li>Donkeys</li>
+                        <li>Dogs</li>
+                        <li>Tigers</li>
+                    </ul>
+                </li>
+                <li>Other
+                    <ul>
+                        <li>Snakes</li>
+                        <li>Birds</li>
+                        <li>Lizards</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>Fishes
+            <ul>
+                <li>Aquarium
+                    <ul>
+                        <li>Guppy</li>
+                        <li>Angelfish</li>
+                    </ul>
+                </li>
+                <li>Sea
+                    <ul>
+                        <li>Sea trout</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        // function counter() {
+        //     let entireLiElements = document.querySelectorAll('li');
+        //     let resultArray = [];
+        //     for (let i = 0; i < entireLiElements.length; i++) {
+        //         let entireLiElement = entireLiElements[i];
+        //         let liElements = entireLiElement.querySelectorAll('li');
+        //         resultArray.push(liElements.length);
+        //     }
+
+
+        //     console.log(resultArray);
+        // }
+        // counter();
+        function counter() {
+            let entireLiElements = document.querySelectorAll('li');
+            let resultArray = [];
+            for (let i = 0; i < entireLiElements.length; i++) {
+                let entireLiElement = entireLiElements[i];
+                let liElements = entireLiElement.querySelectorAll('li');
+                resultArray.push(liElements.length);
+
+                let span = document.createElement('span');
+
+                if (liElements.length > 0) {
+                    span.textContent = '[' + liElements.length + ']';
+                    let final = entireLiElement.prepend(span);
+                }
+
+            }
+            console.log(resultArray);
+        }
+        counter();
     </script>
 
 </body>
