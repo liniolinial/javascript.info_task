@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div id="calendar"></div>
+
+    <script>
+        function createCalendar(elem, year, month) {
+            const calendarElem = document.getElementById('calendar')
+            const date = new Date(year, month, 0);
+
+            console.log(date.getDate());
+            const daysAndMonths = date.getDate();
+            const daysAbbreviations = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+            const tableElement = document.createElement('table');
+            const theadRow = document.createElement('tr');
+            daysAbbreviations.forEach((name) => {
+                const th = document.createElement('th');
+                th.innerHTML = name;
+                theadRow.appendChild(th);
+                const td = document.createElement('td');
+                td.innerHTML = date.getDate();
+            })
+            tableElement.appendChild(theadRow);
+            calendarElem.appendChild(tableElement);
+            const trWeeks = [];
+            for (let i = 0; i < 5; i++) {
+                trWeeks.push(document.createElement('tr'));
+            }
+            // for (let) // hier geht nicht
+            for (let i = 1; i <= daysAndMonths; i++) {
+                const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                const day = new Date(year, month, i).getUTCDay();
+            }
+        }
+        createCalendar(calendar, 2012, 9);
+    </script>
+
+</body>
+
+</html>

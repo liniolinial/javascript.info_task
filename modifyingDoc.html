@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 
@@ -320,7 +321,7 @@
         createTree(container, data);
     </script> -->
     <!-- task6 -->
-    <ul>
+    <!-- <ul>
         <li>Animals
             <ul>
                 <li>Mammals
@@ -355,9 +356,9 @@
                 </li>
             </ul>
         </li>
-    </ul>
-    <script>
-        // function counter() {
+    </ul> -->
+
+    <!-- // function counter() {
         //     let entireLiElements = document.querySelectorAll('li');
         //     let resultArray = [];
         //     for (let i = 0; i < entireLiElements.length; i++) {
@@ -370,26 +371,122 @@
         //     console.log(resultArray);
         // }
         // counter();
-        function counter() {
-            let entireLiElements = document.querySelectorAll('li');
-            let resultArray = [];
-            for (let i = 0; i < entireLiElements.length; i++) {
-                let entireLiElement = entireLiElements[i];
-                let liElements = entireLiElement.querySelectorAll('li');
-                resultArray.push(liElements.length);
 
-                let span = document.createElement('span');
+        // task6
+        // function counter() {
+        //     let entireLiElements = document.querySelectorAll('li');
+        //     let resultArray = [];
+        //     for (let i = 0; i < entireLiElements.length; i++) {
+        //         let entireLiElement = entireLiElements[i];
+        //         let liElements = entireLiElement.querySelectorAll('li');
+        //         resultArray.push(liElements.length);
 
-                if (liElements.length > 0) {
-                    span.textContent = '[' + liElements.length + ']';
-                    let final = entireLiElement.prepend(span);
-                }
+        //         let span = document.createElement('span');
 
-            }
-            console.log(resultArray);
+        //         if (liElements.length > 0) {
+        //             span.textContent = '[' + liElements.length + ']';
+        //             let final = entireLiElement.prepend(span);
+        //         }
+
+        //     }
+        //     console.log(resultArray);
+        // }
+        // counter();
+
+        // task7 -->
+
+    <div id="calendar"></div>
+    <!-- <script>
+        function createCalendar(elem, year, month) {
+            // ...your code that generates the calndar in elem...
+            let table = document.createElement('table');
+
+            let input = document.createElement('input');
+            table.setAttribute('type', month);
+
+            input.setAttribute('value', year);
+            input.setAttribute('value', month);
+
+            table.append(input);
+
+            let calendar = document.getElementById(elem);
+            calendar.append(table);
+            // calendar.append(input);
         }
-        counter();
-    </script>
+        createCalendar('calendar', 2012, 9);
+    </script> -->
+
+    <script>function createCalendar(elem, year, month) {
+            // ... Ihr Code, der den Kalender in elem generiert ...
+
+            let table = document.createElement('table');
+
+            let input = document.createElement('input');
+            input.setAttribute('type', 'month');
+            input.setAttribute('name', 'start');
+            input.setAttribute('value', `${month}-${year}`);
+
+            table.appendChild(input);
+
+            let calendar = document.getElementById(elem);
+            calendar.appendChild(table);
+        }
+
+        createCalendar('calendar', 2012, 9);</script>
+
+
+    <!-- <script> //chat gpt
+        function createCalendar(elem, year, month) {
+            const calendar = document.getElementById(elem);
+
+            // Get the first day of the month and the number of days in the month
+            let firstDay = new Date(year, month - 1, 1);
+            let lastDay = new Date(year, month, 0);
+            let daysInMonth = lastDay.getDate();
+
+            // Create an array of weekday names starting from Monday
+            let weekdayNames = ['MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'];
+
+            // Create the calendar table
+            let table = document.createElement('table');
+
+            // Create the table header row with weekday names
+            let headerRow = document.createElement('tr');
+            for (let i = 0; i < weekdayNames.length; i++) {
+                let th = document.createElement('th');
+                th.textContent = weekdayNames[i];
+                headerRow.appendChild(th);
+            }
+            table.appendChild(headerRow);
+
+            // Determine the starting day of the first week
+            let startDay = firstDay.getDay() === 0 ? 6 : firstDay.getDay() - 1;
+
+            // Create the calendar rows and cells
+            let currentDate = 1;
+            let currentRow = document.createElement('tr');
+            for (let i = 0; i < 7; i++) {
+                let td = document.createElement('td');
+                if (i >= startDay) {
+                    if (currentDate <= daysInMonth) {
+                        td.textContent = currentDate;
+                        currentDate++;
+                    }
+                }
+                currentRow.appendChild(td);
+                if (i === 6 || currentDate > daysInMonth) {
+                    table.appendChild(currentRow);
+                    if (currentDate > daysInMonth) {
+                        break;
+                    }
+                    currentRow = document.createElement('tr');
+                }
+            }
+            calendar.appendChild(table);
+        }
+        createCalendar('calendar', 2012, 9);
+    </script> -->
+
 
 </body>
 
