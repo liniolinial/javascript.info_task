@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- click on this button calls clockStart() -->
+    <input type="button" onclick="clockStart()" value="Start">
+
+    <!-- click on this button calls clockStop() -->
+    <input type="button" onclick="clockStop()" value="Stop">
+
+    <script>
+        let hms = document.createElement('h3');
+        hms.textContent = 'hh:mm:ss';
+        document.body.prepend(hms);
+
+        let startButton = document.getElementsByTagName('input');
+
+        let nIntervId;
+
+        function clockStart() {
+            let now = new Date();
+            let hours = now.getHours();
+            let min = now.getMinutes();
+            let sec = now.getSeconds();
+            console.log(hours + ":" + min + ":" + sec);
+            hms.textContent = hours + ":" + min + ":" + sec;
+            if (!nIntervId) {
+                nIntervId = setInterval(clockStart, 1000);
+            }
+        }
+
+        function clockStop() {
+            clearInterval(nIntervId);
+            // release our intervalID from the variable
+            nIntervId = null;
+        }
+
+        startButton.addEventListener("click", clockStart);
+        startButton.addEventListener("click", clockStop);
+
+        // const intervalID = setInterval(myCallback, 500, "Parameter 1", "Parameter 2");
+
+        // function myCallback(a, b) {
+        //     // Your code here
+        //     // Parameters are purely optional.
+        //     console.log(a);
+        //     console.log(b);
+        // }
+        // document.getElementById("start").addEventListener("click", changeColor);
+        // document.getElementById("stop").addEventListener("click", stopTextColor);
+
+        // console.log(now.getHours() + ': ' + now.getMinutes() + ': ' + now.getSeconds());
+        // let stopwatch = setInterval(function () {
+
+        //     //get today's date and time
+        //     let now = new Date().getTime(hour, min, sec);
+        //     console.log(getDate());
+            // //distance between today and the count down date
+            // let interval = countDownDate - today;
+
+            // //Time calculations for days, hours, minutes and seconds
+            // let days = Math.floor(interval / (1000 * 60 * 60 * 24));
+            // let hours = Math.floor((interval % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            // let min = Math.floor((interval % (1000 * 60 * 60)) / (1000 * 60));
+            // let sec = Math.floor((interval % (1000 * 60)) / (1000));
+
+            // //Output the result in an element with each num x class
+            // document.querySelector(".days").innerHTML = days;
+            // document.querySelector(".hours").innerHTML = hours;
+            // document.querySelector(".min").innerHTML = min;
+            // document.querySelector(".sec").innerHTML = sec;
+
+            // //after countdown,
+            // console.log(interval)
+            // if (interval <= 1000) {
+            //     clearInterval(x);
+            //     froheOstern.innerHTML = "Frohe Ostern!";
+            //     document.body.classList.add("released");
+            // }
+        // });
+    </script>
+</body>
+
+</html>
