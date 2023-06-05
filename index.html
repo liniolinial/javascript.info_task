@@ -93,8 +93,8 @@
         elem.addEventListener('mouseup', menu); -->
     <!-- </script> -->
 
-
-    <input type="button" onclick="clickRemove()" value="Click to hide the text">
+    <!-- task1 -->
+    <!-- <input type="button" onclick="clickRemove()" value="Click to hide the text">
     <h3 id="h3">Text</h3>
 
     <script>
@@ -103,6 +103,18 @@
             element.innerHTML = '';
         }
         input.addEventListener("click", clickRemove);
+    </script> -->
+
+    <!-- task2 -->
+    <input type="button" onclick="clickRemove()" value="Click to hide">
+
+    <script>
+        function clickRemove() {
+            const element = document.querySelector('input');
+            element.remove();
+        }
+        input.addEventListener("click", clickRemove);
+
     </script>
 
 </body>
