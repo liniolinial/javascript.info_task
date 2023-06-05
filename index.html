@@ -106,7 +106,7 @@
     </script> -->
 
     <!-- task2 -->
-    <input type="button" onclick="clickRemove()" value="Click to hide">
+    <!-- <input type="button" onclick="clickRemove()" value="Click to hide">
 
     <script>
         function clickRemove() {
@@ -115,8 +115,27 @@
         }
         input.addEventListener("click", clickRemove);
 
-    </script>
+    </script> -->
 
+    <!-- task3 -->
+    <!-- <input type="button" onclick="clickRemove()" value="Click to hide"> -->
+    <button onclick="click()">helleo</button>
+    <script>
+        const button = document.querySelector(button);
+        button.addEventListener("click", () => alert("1"));
+
+        button.removeEventListener("click", () => alert("1"));
+
+        // button.onclick = () => alert(2);
+    </script>
+    <script>
+        function handler() {
+            alert(1);
+        }
+
+        button.addEventListener("click", handler);
+        button.removeEventListener("click", handler);
+    </script>
 </body>
 
 </html>
