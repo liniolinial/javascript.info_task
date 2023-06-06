@@ -6,6 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+
+    <meta charset="utf-8">
+    <style>
+        .menu ul {
+            margin: 0;
+            list-style: none;
+            padding-left: 20px;
+            display: none;
+        }
+
+        .menu .title {
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .menu .title::before {
+            content: '▶ ';
+            font-size: 80%;
+            color: green;
+        }
+
+        .menu.open .title::before {
+            content: '▼ ';
+        }
+
+        .menu.open ul {
+            display: block;
+        }
+    </style>
+
+
 </head>
 
 <body>
@@ -119,7 +151,7 @@
 
     <!-- task3 -->
     <!-- <input type="button" onclick="clickRemove()" value="Click to hide"> -->
-    <button onclick="click()">helleo</button>
+    <!-- <button onclick="click()">helleo</button>
     <script>
         const button = document.querySelector(button);
         button.addEventListener("click", () => alert("1"));
@@ -135,7 +167,61 @@
 
         button.addEventListener("click", handler);
         button.removeEventListener("click", handler);
+    </script> -->
+
+    <!-- task5 -->
+    <!-- <ul>
+        <li>Cake</li>
+        <li>Donut</li>
+        <li>Honey</li>
+    </ul> -->
+    <!-- <script>
+        let sweeties = document.createElement('h5');
+        sweeties.textContent = '▶ Sweeties (click me)!';
+        document.body.prepend(sweeties);
+
+
+        function opens() {
+            sweeties.textContent = '▼ Sweeties (click me)!';
+            let ul = document.createElement('ul');
+            ul.innerHTML = '<li>Cake</li><li>Donut</li><li>Honey</li>';
+            sweeties.insertAdjacentElement("afterend", ul);
+        }
+
+        function collapses() {
+            if (ul) {
+                ul.parentNode.removeChild(ul);
+                sweeties.textContent = '▶ Sweeties (click me)!';
+            }
+
+        }
+
+        sweeties.addEventListener('click', opens);
+        sweeties.addEventListener('click', collapses);
+
+    </script> -->
+
+
+    <div id="sweeties" class="menu">
+        <span class="title">Sweeties (click me)!</span>
+        <ul>
+            <li>Cake</li>
+            <li>Donut</li>
+            <li>Honey</li>
+        </ul>
+    </div>
+
+    <script>
+        let menuElem = document.getElementById('sweeties');
+        let titleElem = menuElem.querySelector('.title');
+        titleElem.onclick = function () {
+            menuElem.classList.toggle('open');
+        };
     </script>
+
+
+
+
 </body>
 
 </html>
