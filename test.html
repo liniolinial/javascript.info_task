@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            list-style-type: none;
+        }
+
+        ul {
+            padding: 0;
+        }
+
+        #slider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 25rem;
+            padding: 0;
+        }
+
+        .slide {
+
+            display: none;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="slider">
+        <ul>
+            <li><img class="slide" src="https://en.js.cx/carousel/1.png"></li>
+            <li><img class="slide" src="https://en.js.cx/carousel/2.png"></li>
+            <li><img class="slide" src="https://en.js.cx/carousel/3.png"></li>
+            <li><img class="slide" src="https://en.js.cx/carousel/4.png"></li>
+            <li><img class="slide" src="https://en.js.cx/carousel/5.png"></li>
+            <li><img class="slide" src="https://en.js.cx/carousel/6.png"></li>
+            <li><img class="slide" src="https://en.js.cx/carousel/7.png"></li>
+            <li><img class="slide" src="https://en.js.cx/carousel/8.png"></li>
+            <li><img class="slide" src="https://en.js.cx/carousel/9.png"></li>
+            <li><img class="slide" src="https://en.js.cx/carousel/10.png"></li>
+        </ul>
+    </div>
+
+    <button id="prevButton">Zurück</button>
+    <button id="nextButton">Weiter</button>
+
+    <script>
+        let currentSlideIndex = 0;
+        let slides = document.querySelectorAll('.slide');
+        let prevButton = document.getElementById('prevButton');
+        let nextButton = document.getElementById('nextButton');
+
+        function showSlide(index) {
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            slides[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlideIndex++;
+
+            if (currentSlideIndex >= slides.length) {
+                currentSlideIndex = 0;
+            }
+            showSlide(currentSlideIndex);
+        }
+
+        function prevSlide() {
+            currentSlideIndex--;
+            if (currentSlideIndex < 0) { currentSlideIndex = slides.length - 1; } showSlide(currentSlideIndex);
+        }
+
+        nextButton.addEventListener('click', nextSlide);
+        prevButton.addEventListener('click', prevSlide);
+
+        showSlide(currentSlideIndex); 
+    </script>
+
+</body>
+
+</html>

@@ -56,3 +56,91 @@
 
 // elem.addEventListener("mousedown", menu);
 // elem.addEventListener("mouseup", menu);
+
+////hier-----
+// let slider = document.getElementById("slider");
+// let slides = document.querySelectorAll(".slide");
+// let buttonPrev = document.getElementById("buttonPrev");
+// let buttonNext = document.getElementById("buttonNext");
+// document.body.prepend(slides.length);
+
+// function showSlide() {
+//   for (let i = 0; i < slides.length; i++) {
+//     if (i < limit) {
+//       slides[i].style.display = "block";
+//     } else {
+//       slides[i].style.display = "none";
+//     }
+//   }
+// }
+
+// // function goForward() {
+// //   limit -= 3;
+// //   if (limit > slides.length) {
+// //     limit = slides.length;
+// //   }
+// //   showSlide();
+// // }
+
+// function goForward() {
+//   const currentActiveIndex = Array.from(slides);
+//   const nextActiveIndex = currentActiveIndex + 3;
+
+//   for (let i = currentActiveIndex; i < nextActiveIndex; i++) {
+//     if (slides[i]) {
+//       slides[i].style.display = "block";
+//     }
+//   }
+// }
+
+// function goBackward() {
+//   limit += 3;
+//   if (limit < 3) {
+//     limit = 3;
+//   }
+//   showSlide();
+// }
+
+// buttonNext.addEventListener("click", goForward);
+// buttonPrev.addEventListener("click", goBackward);
+// showSlide();
+////bis hier----
+
+const slides = document.querySelectorAll(".slide");
+const buttonPrev = document.getElementById("buttonPrev");
+const buttonNext = document.getElementById("buttonNext");
+
+let startIndex = 0;
+let limit = 3;
+
+function showSlides(startIndex, limit) {
+  slides.forEach((slide, index) => {
+    if (index >= startIndex && index < startIndex + limit) {
+      slide.style.display = "flex";
+    } else {
+      slide.style.display = "none";
+    }
+  });
+}
+
+function goForward() {
+  if (startIndex + limit <= slides.length) {
+    startIndex += limit;
+    if (startIndex + limit > slides.length) {
+      startIndex = slides.length - 3;
+    }
+    showSlides(startIndex, limit);
+  }
+}
+//nur muss ich bei hier den if -3 Bediengung fragen, weil hier 10. gerade Zahl ist
+function goBackward() {
+  if (startIndex >= limit) {
+    startIndex -= limit;
+  } else {
+    startIndex = 0;
+  }
+  showSlides(startIndex, limit);
+}
+// hier nicht weil schon wegen goForward teil ungerade Zahl 9 ist, also passt das hier
+buttonNext.addEventListener("click", goForward);
+buttonPrev.addEventListener("click", goBackward);

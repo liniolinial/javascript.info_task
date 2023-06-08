@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <button id="buttonPrev">⇦</button>
+        <div id="slider">
+            <ul>
+                <li><img class="slide" src="https://en.js.cx/carousel/1.png"></li>
+                <li><img class="slide" src="https://en.js.cx/carousel/2.png"></li>
+                <li><img class="slide" src="https://en.js.cx/carousel/3.png"></li>
+                <li><img class="slide" src="https://en.js.cx/carousel/4.png"></li>
+                <li><img class="slide" src="https://en.js.cx/carousel/5.png"></li>
+                <li><img class="slide" src="https://en.js.cx/carousel/6.png"></li>
+                <li><img class="slide" src="https://en.js.cx/carousel/7.png"></li>
+                <li><img class="slide" src="https://en.js.cx/carousel/8.png"></li>
+                <li><img class="slide" src="https://en.js.cx/carousel/9.png"></li>
+                <li><img class="slide" src="https://en.js.cx/carousel/10.png"></li>
+            </ul>
+        </div>
+        <button id="buttonNext">⇨</button>
+    </div>
+    <script defer src="JSPart2/introBrowserEvent.js">
+        // const PER_VIEW = 3;
+
+        // const slider = document.getElementById("slider");
+        // const slides = slider.querySelectorAll("li");
+        // const buttonPrev = document.getElementById("buttonPrev");
+        // const buttonNext = document.getElementById("buttonNext");
+
+        // const slidesLength = slides.length;
+        // /* Total page number ceil because e.g. 10 / 3 = 3.33 = need 4 pages to display */
+        // const pages = Math.ceil(slidesLength / PER_VIEW);
+        // let currentIndex = PER_VIEW;
+
+        // function showSlide(method) {
+        //     switch (method) {
+        //         case "next":
+        //             currentIndex += PER_VIEW;
+        //             break;
+        //         case "prev":
+        //             currentIndex -= PER_VIEW;
+        //     }
+
+        //     /* Gets current page number */
+        //     const currentPage = Math.ceil(currentIndex / PER_VIEW);
+
+        //     /* Checks if first page */
+        //     if (currentPage == 1) {
+        //         buttonPrev.disabled = true;
+        //     } else {
+        //         buttonPrev.disabled = false;
+        //     }
+
+        //     /* Checks if last page */
+        //     if (currentPage == pages) {
+        //         buttonNext.disabled = true;
+        //     } else {
+        //         buttonNext.disabled = false;
+        //     }
+
+        //     for (let i = 0; i < slidesLength; i++) {
+        //         if (i < currentIndex && i >= currentIndex - PER_VIEW) {
+        //             slides[i].style.display = "block";
+        //         } else {
+        //             slides[i].style.display = "none";
+        //         }
+        //     }
+        // }
+
+        // function next() {
+        //     showSlide("next");
+        // }
+
+        // function prev() {
+        //     showSlide("prev");
+        // }
+
+        // buttonNext.addEventListener("click", next);
+        // buttonPrev.addEventListener("click", prev);
+        // showSlide();
+    </script>
+
+    <!-- // // try2
+        // const carousel = document.getElementById('slider');
+        // const container = document.querySelector('ul');
+        // const slideWidth = carousel.offsetWidth; // Breite eines Carousel Elements
+        // let currentPosition = 0;
+
+        // function goToSlide(index) {
+        //     currentPosition = index * slideWidth;
+        //     container.style.transform = `translateX(-${currentPosition}px)`;
+        // }
+
+        // // Beispiel: Carousel zum nächsten Slide wechseln
+        // function nextSlide() {
+        //     if (currentPosition < (container.offsetWidth - carousel.offsetWidth)) {
+        //         currentPosition += slideWidth;
+        //         container.style.transform = `translateX(-${currentPosition}px)`;
+        //     }
+        // }
+
+        // // Beispiel: Carousel zum vorherigen Slide wechseln
+        // function prevSlide() {
+        //     if (currentPosition > 0) {
+        //         currentPosition -= slideWidth;
+        //         container.style.transform = `translateX(-${currentPosition}px)`;
+        //     }
+        // }
+
+        // // Beispiel: Event Listener für Buttons
+        // document.querySelector('#buttonNext').addEventListener('click', nextSlide);
+        // document.querySelector('#buttonPrev').addEventListener('click', prevSlide);
+
+        // // try3
+        // function updateSlider() {
+        //     for (let i = 3; i < slides.length; i++) {
+        //         if (i < limit) {
+        //             slides[i].style.display = 'inline';
+        //         } else {
+        //             slides[i].style.display = 'none';
+        //         }
+        //     }
+        // }
+        // function updateSlider(limit) {
+        //     for (let i = limit; i < limit + 3; i++) {
+        //         // slide.classList.remove('active');
+        //     };
+
+        //     slides[limit].classList.add('.active');
+        // }
+        // // buttonLeft.addEventListener('click', goBackward);
+        // buttonRight.addEventListener('click', goForward);
+
+    // 
+    // 
+    // <script>
+    //     let slides = document.querySelectorAll('#slider li');
+    //     let buttonRight = document.getElementById('buttonRight');
+
+    //     function goForward() {
+    //         for (let i = 0; i < 3; i++) {
+    //             let index = (i + slides.length - 3) % slides.length;
+    //             slides[index].style.display = 'block';
+    //         }
+    //         for (let i = 0; i < slides.length; i++) {
+    //             slides[i].style.display = 'none';
+    //         }
+    //     }
+
+    //     buttonRight.addEventListener('click', goForward);
+    // </script> -->
+</body>
+
+</html>

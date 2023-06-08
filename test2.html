@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        li {
+            list-style-type: none;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li class="slide"><img src="https://en.js.cx/carousel/1.png"></li>
+        <li class="slide"><img src="https://en.js.cx/carousel/2.png"></li>
+        <li class="slide"><img src="https://en.js.cx/carousel/3.png"></li>
+        <li class="slide"><img src="https://en.js.cx/carousel/4.png"></li>
+        <li class="slide"><img src="https://en.js.cx/carousel/5.png"></li>
+        <li class="slide"><img src="https://en.js.cx/carousel/6.png"></li>
+        <li class="slide"><img src="https://en.js.cx/carousel/7.png"></li>
+    </ul>
+
+    <!-- <script>
+        const lists = document.querySelectorAll('li');
+        const object = ['a', 'b', 'c', 'd', 'e', 6, 7, 8, 9, 10];
+        let startIndex = 0;
+        let limit = 3;
+
+        while (startIndex + 2 < lists[limit]) {
+            const slicedArray = lists.slice(startIndex, lists.length);
+            console.log(slicedArray);
+            startIndex += 3;
+        }
+        document.body.prepend(sliceArray);
+        document.body.prepend(sliceArray);
+    </script> -->
+
+    <script>
+        const lists = document.querySelectorAll('li');
+        let startIndex = 0;
+        let limit = 3;
+
+        while (startIndex + limit <= lists.length) {
+            const slicedArray = Array.from(lists).slice(startIndex, startIndex + limit);
+            console.log(slicedArray);
+            startIndex += limit;
+        }
+    </script>
+</body>
+
+</html>

@@ -8,7 +8,7 @@
     <title>Document</title>
 
     <!-- task5 -->
-    <!-- <meta charset="utf-8">
+    <meta charset="utf-8">
     <style>
         .menu ul {
             margin: 0;
@@ -35,7 +35,7 @@
         .menu.open ul {
             display: block;
         }
-    </style> -->
+    </style>
 </head>
 
 <body>
@@ -168,7 +168,7 @@
     </script> -->
 
     <!-- task5  meine Lösung Hile mit GPT nach 8. Versuch-->
-    <script>
+    <!-- <script>
         let sweeties = document.createElement('h5');
         sweeties.textContent = '▶ Sweeties (click me)!';
         document.body.prepend(sweeties);
@@ -195,7 +195,7 @@
         }
         sweeties.addEventListener('click', opens);
 
-    </script>
+    </script> -->
 
     <!-- <script>
     //     let sweeties = document.createElement('h5');
@@ -227,23 +227,23 @@
     // </script> -->
 
     <!-- task5 Lösung -->
-    <!-- <div id="sweeties" class="menu">
-    //     <span class="title">Sweeties (click me)!</span>
-    //     <ul>
-    //         <li>Cake</li>
-    //         <li>Donut</li>
-    //         <li>Honey</li>
-    //     </ul>
-    // </div>
+    <div id="sweeties" class="menu">
+        <span class="title">Sweeties (click me)!</span>
+        <ul>
+            <li>Cake</li>
+            <li>Donut</li>
+            <li>Honey</li>
+        </ul>
+    </div>
 
-    // <script>
-    //     let ul;
-    //     let menuElem = document.getElementById('sweeties');
-    //     let titleElem = menuElem.querySelector('.title');
-    //     titleElem.onclick = function () {
-    //         menuElem.classList.toggle('open');
-    //     };
-    // </script> -->
+    <script>
+        let ul;
+        let menuElem = document.getElementById('sweeties');
+        let titleElem = menuElem.querySelector('.title');
+        titleElem.onclick = function () {
+            menuElem.classList.toggle('open');
+        };
+    </script>
 
     <!-- task6 -->
     <!-- <button class="arrow">⇦</button>
