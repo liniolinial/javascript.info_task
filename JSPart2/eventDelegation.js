@@ -161,21 +161,39 @@
 
 // move all text into <span>
 // they occupy exactly the place necessary for the text,
-for (let li of tree.querySelectorAll("li")) {
+
+// for (let li of tree.querySelectorAll("li")) {
+//   let span = document.createElement("span");
+//   li.prepend(span);
+//   span.append(span.nextSibling); // move the text node into span
+// }
+
+// oder so
+
+let li = document.querySelectorAll("li");
+li.forEach((li) => {
   let span = document.createElement("span");
   li.prepend(span);
-  span.append(span.nextSibling); // move the text node into span
-}
+  span.append(span.nextSibling);
+});
+
 // catch clicks on whole tree
 tree.onclick = function (event) {
   if (event.target.tagName != "SPAN") {
     return;
   }
 
-  let li = event.target.closest("li");
-  if (!li) return; //
+  //mit closest
+  //   let li = event.target.closest("li");
+  //   if (!li) return; //
 
-  let childrenContainer = li.querySelector("ul");
+  //   let childrenContainer = li.querySelector("ul");
+  //   if (!childrenContainer) return; // no children
+
+  //   childrenContainer.hidden = !childrenContainer.hidden;
+
+  //mit parentNode: kürzer
+  let childrenContainer = event.target.parentNode.querySelector("ul");
   if (!childrenContainer) return; // no children
 
   childrenContainer.hidden = !childrenContainer.hidden;
