@@ -162,6 +162,7 @@
 // move all text into <span>
 // they occupy exactly the place necessary for the text,
 
+//for loop
 // for (let li of tree.querySelectorAll("li")) {
 //   let span = document.createElement("span");
 //   li.prepend(span);
@@ -169,35 +170,95 @@
 // }
 
 // oder so
+//forEach loop
+// let li = document.querySelectorAll("li");
+// li.forEach((li) => {
+//   let span = document.createElement("span");
+//   li.prepend(span);
+//   span.append(span.nextSibling);
+// });
 
-let li = document.querySelectorAll("li");
-li.forEach((li) => {
-  let span = document.createElement("span");
-  li.prepend(span);
-  span.append(span.nextSibling);
-});
+// // catch clicks on whole tree
+// tree.onclick = function (event) {
+//   if (event.target.tagName != "SPAN") {
+//     return;
+//   }
 
-// catch clicks on whole tree
-tree.onclick = function (event) {
-  if (event.target.tagName != "SPAN") {
-    return;
+//   //mit closest
+//   //   let li = event.target.closest("li");
+//   //   if (!li) return; //
+//   //   let childrenContainer = li.querySelector("ul");
+//   //   if (!childrenContainer) return; // no children
+//   //   childrenContainer.hidden = !childrenContainer.hidden;
+
+//   //oder
+
+//   //mit parentNode: kürzer
+//   let childrenContainer = event.target.parentNode.querySelector("ul");
+//   if (!childrenContainer) return; // no children
+
+//   childrenContainer.hidden = !childrenContainer.hidden;
+// };
+
+// task3
+// function sortTable(columnIndex) {
+//   let table = document.getElementById("grid");
+//   let tbody = table.querySelector("tbody");
+// }
+
+// grid.onclick = function (event) {
+//   let num = event.target.dataset.number;
+//   let firstTds = document.querySelectorAll("tr td:first-child");
+
+//   //   if (num) {
+//   //     // console.log(Array.from(firstTds).sort(compareNumeric));
+//   //     console.log(firstTds.sort(compareNumeric));
+//   //     // // let number = event.target.dataset.number;
+//   //     // if (event.target.dataset.number !== undefined) {
+//   //     //   console.log(firstTds.sort(compareNumeric));
+//   //     //   //   console.log(firstTds);
+//   //   }
+//   //   // let string = event.target.dataset.string;
+
+//   console.log(firstTds);
+// };
+
+// try3
+grid.onclick = function (event) {
+  let target = event.target;
+  if (target.getAttribute("data-type") === "number") {
+    let firstTds = document.querySelectorAll("tr td:nth-child(2n-1)");
+    let firstTdsNum = [];
+
+    firstTds.forEach((item) => {
+      firstTdsNum.push(Number(item.textContent));
+    });
+    let resultNum = firstTdsNum.sort(compareNumeric);
+    console.log(resultNum);
+
+    firstTds.forEach((item, index) => {
+      item.textContent = resultNum[index];
+    });
   }
 
-  //mit closest
-  //   let li = event.target.closest("li");
-  //   if (!li) return; //
+  if (target.getAttribute("data-type") === "string") {
+    let secondTds = document.querySelectorAll("tr td:nth-child(2n)");
+    let secondTdsStr = [];
 
-  //   let childrenContainer = li.querySelector("ul");
-  //   if (!childrenContainer) return; // no children
+    secondTds.forEach((item) => {
+      secondTdsStr.push(String(item.textContent));
+    });
+    let resultString = secondTdsStr.sort();
+    console.log(resultString);
 
-  //   childrenContainer.hidden = !childrenContainer.hidden;
-
-  //mit parentNode: kürzer
-  let childrenContainer = event.target.parentNode.querySelector("ul");
-  if (!childrenContainer) return; // no children
-
-  childrenContainer.hidden = !childrenContainer.hidden;
+    secondTds.forEach((item, index) => {
+      item.textContent = resultString[index];
+    });
+  }
 };
 
-// let childrenContainer = li.closest("li");
-// if (!childrenContainer) return; // no children
+function compareNumeric(a, b) {
+  if (a > b) return 1;
+  if (a == b) return 0;
+  if (a < b) return -1;
+}

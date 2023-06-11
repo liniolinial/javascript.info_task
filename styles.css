@@ -38,10 +38,26 @@ p {
 } */
 
 /* task2 */
-.tree span:hover {
+/* .tree span:hover {
   font-weight: bold;
 }
 
 .tree span {
   cursor: pointer;
+} */
+
+/* task3 */
+table {
+  border-collapse: collapse;
+}
+th,
+td {
+  border: 1px solid black;
+  padding: 4px;
+}
+th {
+  cursor: pointer;
+}
+th:hover {
+  background: yellow;
 }
