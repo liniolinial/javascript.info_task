@@ -200,7 +200,7 @@
 //   childrenContainer.hidden = !childrenContainer.hidden;
 // };
 
-// task3
+////////////////////////// task3
 // function sortTable(columnIndex) {
 //   let table = document.getElementById("grid");
 //   let tbody = table.querySelector("tbody");
@@ -224,18 +224,53 @@
 // };
 
 // try3
+//meine Lösung
+// grid.onclick = function (event) {
+//   let target = event.target;
+//   if (target.getAttribute("data-type") === "number") {
+//     let firstTds = document.querySelectorAll("tr td:nth-child(2n-1)");
+//     let firstTdsNum = [];
+
+//     firstTds.forEach((item) => {
+//       firstTdsNum.push(Number(item.textContent));
+//     });
+//     let resultNum = firstTdsNum.sort(compareNumeric);
+//     firstTds.forEach((item, index) => {
+//       item.textContent = resultNum[index];
+//     });
+//     return;
+//   }
+
+//   if (target.getAttribute("data-type") === "string") {
+//     let secondTds = document.querySelectorAll("tr td:nth-child(2n)");
+//     let secondTdsStr = [];
+
+//     secondTds.forEach((item) => {
+//       secondTdsStr.push(String(item.textContent));
+//     });
+//     let resultString = secondTdsStr.sort();
+//     secondTds.forEach((item, index) => {
+//       item.textContent = resultString[index];
+//     });
+//   }
+//   return;
+// };
+
+// function compareNumeric(a, b) {
+//   if (a > b) return 1;
+//   if (a == b) return 0;
+//   if (a < b) return -1;
+// }
+
 grid.onclick = function (event) {
   let target = event.target;
   if (target.getAttribute("data-type") === "number") {
     let firstTds = document.querySelectorAll("tr td:nth-child(2n-1)");
     let firstTdsNum = [];
-
     firstTds.forEach((item) => {
       firstTdsNum.push(Number(item.textContent));
     });
     let resultNum = firstTdsNum.sort(compareNumeric);
-    console.log(resultNum);
-
     firstTds.forEach((item, index) => {
       item.textContent = resultNum[index];
     });
@@ -244,13 +279,10 @@ grid.onclick = function (event) {
   if (target.getAttribute("data-type") === "string") {
     let secondTds = document.querySelectorAll("tr td:nth-child(2n)");
     let secondTdsStr = [];
-
     secondTds.forEach((item) => {
       secondTdsStr.push(String(item.textContent));
     });
     let resultString = secondTdsStr.sort();
-    console.log(resultString);
-
     secondTds.forEach((item, index) => {
       item.textContent = resultString[index];
     });
@@ -262,3 +294,38 @@ function compareNumeric(a, b) {
   if (a == b) return 0;
   if (a < b) return -1;
 }
+
+// // Lösung Vergleich
+// grid.onclick = function (e) {
+//   if (e.target.tagName != "TH") return;
+//   let th = e.target;
+//   // if TH, then sort
+//   // cellIndex is the number of th:
+//   //   0 for the first column
+//   //   1 for the second column, etc
+//   sortGrid(th.cellIndex, th.dataset.type);
+// };
+
+// function sortGrid(colNum, type) {
+//   let tbody = grid.querySelector("tbody");
+//   let rowsArray = Array.from(tbody.rows);
+//   // compare(a, b) compares two rows, need for sorting
+//   let compare;
+//   switch (type) {
+//     case "number":
+//       compare = function (rowA, rowB) {
+//         return rowA.cells[colNum].innerHTML - rowB.cells[colNum].innerHTML;
+//       };
+//       break;
+//     case "string":
+//       compare = function (rowA, rowB) {
+//         return rowA.cells[colNum].innerHTML > rowB.cells[colNum].innerHTML
+//           ? 1
+//           : -1;
+//       };
+//       break;
+//   }
+//   // sort
+//   rowsArray.sort(compare);
+//   tbody.append(...rowsArray);
+// }
